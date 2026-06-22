@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Identificar Flor</title>
+    <p>
+        Flores candidatas restantes: {{ restantes }}
+    </p>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        h2{
+            text-align:center;
+        }
+
+        .opcion{
+            width:100%;
+            padding:15px;
+            margin:10px 0;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h2>{{ pregunta.texto }}</h2>
+    <p>
+        Flores candidatas restantes:
+        <strong>{{ restantes }}</strong>
+    </p>
+    
+    <p>
+        Atributo elegido:
+        <strong>{{ pregunta.campo }}</strong>
+    </p>
+
+    <form method="POST">
+
+        {% for opcion in opciones %}
+
+            <button
+                type="submit"
+                name="respuesta"
+                value="{{ opcion }}"
+                class="opcion">
+
+                {% if opcion == True %}
+                    Sí
+                {% elif opcion == False %}
+                    No
+                {% else %}
+                    {{ opcion }}
+                {% endif %}
+
+            </button>
+
+        {% endfor %}
+
+    </form>
+
+</body>
+</html>
